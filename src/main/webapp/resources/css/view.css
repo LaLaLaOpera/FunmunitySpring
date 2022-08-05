@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.contentWrap{
+	min-height: 600px;
+	width: 920px;
+	margin: 0 auto;
+}
+
+.contentArea img{
+	max-width: 400px;
+	height: auto;
+}
+.contentArea{
+	align-content:center;
+	text-align: center;
+}
+.commentBox{
+	background-color: skyblue;
+	border: 1px solid;
+	margin: 5px;
+}
+
+.subCommnetBox{
+	background-color: #dda0dd;
+	border: 1px solid;
+	margin-bottom: 5px;
+}
+
+.commentExtra>.commentInput{
+	padding-bottom: 20px;
+	display: none;
+}
+
+.commentExtra>.commentInput.on{
+	display: grid;
+}
+
+.commentArea{
+	min-height: 600px;
+}
+
+.subCommentArea{
+	margin-left: 50px;
+	display: none;
+}
+
+.subCommentArea.on{
+	display: block
+}
+.subCommentAreaActive{
+	margin-left: 50px;
+}
+
+.profile_pic{
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	background-color: lightgreen;
+}
+.profile_pic img{
+	border-radius: 100%;	
+	width: 100%;
+}	
+
+.commentInput{
+	display: grid;
+	grid-template-columns: 50px auto;
+}
+
+.input_section{
+	margin-left: 10px;
+}
+.input_section form{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.commentInput textarea{
+	padding: 5px;
+	border: none;
+	border-bottom: 3px solid black;
+	width: 90%;
+	height: 40px;
+	resize: none;
+}
+.commentInput textarea::focus {
+	border: none;
+}
