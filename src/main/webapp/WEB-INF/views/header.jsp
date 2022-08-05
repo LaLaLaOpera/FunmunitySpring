@@ -12,7 +12,7 @@
 <body>
 <div class="modal_login">
 	<div class="login_content">
-		<form method="post">
+		<form method="post" action="user">
 			<ul>
 				<li>아이디</li>
 				<li><input type="text" name="user_id"></li>
@@ -21,14 +21,14 @@
 				<li>비밀번호</li>
 				<li><input type="password" name="password"></li>
 			</ul>
-			<button onclick="userLogin(this)">로그인</button>
+			<button>로그인</button>
 			<button type="button" class="loginExit">창닫기</button>
 		</form>
 	</div>
 </div>
 <div class="modal_signUp">
 	<div class="signup_content">
-		<form method="post" action="./signUp.do">
+		<form method="post" action="/login">
 			<ul>
 				<li>아이디</li>
 				<li><input type="text" name="user_id"></li>

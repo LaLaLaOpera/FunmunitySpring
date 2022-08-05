@@ -5,21 +5,38 @@ import com.funmunity.myapp.member.MemberDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
-@RequestMapping("*/membership")
 public class MembershipController {
-    @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public MemberDTO login(@RequestParam("map")Map<String, String> map) {
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String login(MemberDTO data, HttpSession session, HttpServletResponse response) throws IOException {
         MemberDAO dao = new MemberDAO();
-        try{
-            MemberDTO dto = dao.userLogin(map.get("user_id"), map.get("user_pw"));
+        MemberDTO dto = dao.userLogin(data.getUser_id(), data.getUser_pw());
+        dao.close();
 
-            return dto;
-        }catch(Exception e){
-            return null;
+        if (dto.getUser_id().equals(data.getUser_id())) {
+            session.setAttribute("user_info", dto);
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+
+            out.println("<script language='javascript'>'");
+            out.println("alert('로그인에 성공했습니다.')");
+            out.println("</script>");
+            out.close();
+            return "index";
+        }else{
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+
+            out.println("<script language='javascript'>'");
+            out.println("alert('로그인에 실패했습니다.')");
+            out.println("</script>");
+            out.close();
+            return "index";
         }
     }
 }
