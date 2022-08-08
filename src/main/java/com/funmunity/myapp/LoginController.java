@@ -11,11 +11,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Controller
-public class MembershipController {
+public class LoginController {
+    @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String login(MemberDTO data, HttpSession session, HttpServletResponse response) throws IOException {
         MemberDAO dao = new MemberDAO();
         MemberDTO dto = dao.userLogin(data.getUser_id(), data.getUser_pw());
+        System.out.println("dto = " + dto);
         dao.close();
 
         if (dto.getUser_id().equals(data.getUser_id())) {
@@ -27,16 +29,25 @@ public class MembershipController {
             out.println("alert('로그인에 성공했습니다.')");
             out.println("</script>");
             out.close();
-            return "index";
+
+            return "성공했습니다";
         }else{
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
 
             out.println("<script language='javascript'>'");
             out.println("alert('로그인에 실패했습니다.')");
+            out.print("location.reload()");
             out.println("</script>");
             out.close();
-            return "index";
+
+            return "실패했습니다";
         }
+    }
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public String logout(HttpSession session){
+        session.removeAttribute("user_info");
+
+        return "index";
     }
 }

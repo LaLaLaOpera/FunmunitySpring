@@ -10,46 +10,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <body>
-<div class="modal_login">
-	<div class="login_content">
-		<form method="post" action="user">
-			<ul>
-				<li>아이디</li>
-				<li><input type="text" name="user_id"></li>
-			</ul>
-			<ul>
-				<li>비밀번호</li>
-				<li><input type="password" name="password"></li>
-			</ul>
-			<button>로그인</button>
-			<button type="button" class="loginExit">창닫기</button>
-		</form>
+	<div class="modal_login">
+		<div class="login_content">
+			<form id="loginFrm">
+				<ul>
+					<li>아이디</li>
+					<li><input type="text" name="user_id"></li>
+				</ul>
+				<ul>
+					<li>비밀번호</li>
+					<li><input type="password" name="user_pw"></li>
+				</ul>
+				<button type="button" class="loginConfirm">로그인</button>
+				<button type="button" class="loginExit">창닫기</button>
+			</form>
+		</div>
 	</div>
-</div>
-<div class="modal_signUp">
-	<div class="signup_content">
-		<form method="post" action="/login">
-			<ul>
-				<li>아이디</li>
-				<li><input type="text" name="user_id"></li>
-			</ul>
-			<ul>
-				<li>비밀번호</li>
-				<li><input type="password" name="password"></li>
-			</ul>
-			<ul>
-				<li>이메일</li>
-				<li><input type="text" name="user_email"></li>
-			</ul>
-			<ul>
-				<li>이름</li>
-				<li><input type="text" name="user_name"></li>
-			</ul>
-			<button>회원가입</button>
-			<button type="button" class="signUpExit">창닫기</button>
-		</form>
+	<div class="modal_signUp">
+		<div class="signup_content">
+			<form id="signupFrm">
+				<ul>
+					<li>아이디</li>
+					<li><input type="text" name="user_id"></li>
+				</ul>
+				<ul>
+					<li>비밀번호</li>
+					<li><input type="password" name="user_pw"></li>
+				</ul>
+				<ul>
+					<li>이메일</li>
+					<li><input type="text" name="user_email"></li>
+				</ul>
+				<ul>
+					<li>이름</li>
+					<li><input type="text" name="user_name"></li>
+				</ul>
+				<button type="button" class="signupConfirm">회원가입</button>
+				<button type="button" class="signUpExit">창닫기</button>
+			</form>
+		</div>
 	</div>
-</div>
 	<div class="headerWrap">
 		<nav class="navWrap">
 			<a class="logo" href="../myapp">logo</a>
@@ -67,7 +67,7 @@
 						<li><a class="signUpBtn">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="./logOut.do">로그아웃</a></li>
+						<li><a onclick="logout()">로그아웃</a></li>
 						<li><a href="">등등</a></li>
 						<li><a href="">필요한기능</a></li>
 					</c:otherwise>

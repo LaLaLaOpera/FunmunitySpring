@@ -48,7 +48,7 @@ public class SubCommentDAO extends DBconnection {
 		
 		for (int i = 1; i<=result;i++) {
 			List<SubCommentDTO> newList = new Vector<SubCommentDTO>();
-			query = "Select * from subcomment where commentidx = ? AND boardidx = ? ";
+			query = "Select * from subcomment where commentidx = ? AND boardidx = ? ORDER BY POSTDATE";
 			try {
 				psmt = con.prepareStatement(query);
 				psmt.setString(1,String.valueOf(i));

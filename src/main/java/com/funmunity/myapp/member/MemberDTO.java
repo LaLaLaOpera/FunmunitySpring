@@ -78,6 +78,21 @@ public class MemberDTO {
 	public void setProfile_img(String profile_img) {
 		this.profile_img = profile_img;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "MemberDTO{" +
+				"user_id='" + user_id + '\'' +
+				", user_num='" + user_num + '\'' +
+				", user_pw='" + user_pw + '\'' +
+				", fun_point=" + fun_point +
+				", user_email='" + user_email + '\'' +
+				", user_name='" + user_name + '\'' +
+				", char_job='" + char_job + '\'' +
+				", auth_level='" + auth_level + '\'' +
+				", user_level='" + user_level + '\'' +
+				", user_exp=" + user_exp +
+				", profile_img='" + profile_img + '\'' +
+				'}';
+	}
 }

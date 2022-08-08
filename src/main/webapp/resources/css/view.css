@@ -15,13 +15,11 @@
 	text-align: center;
 }
 .commentBox{
-	background-color: skyblue;
 	border: 1px solid;
 	margin: 5px;
 }
 
-.subCommnetBox{
-	background-color: #dda0dd;
+.subCommentBox{
 	border: 1px solid;
 	margin-bottom: 5px;
 }
@@ -83,6 +81,6 @@
 	height: 40px;
 	resize: none;
 }
-.commentInput textarea::focus {
+.commentInput textarea:focus {
 	border: none;
 }

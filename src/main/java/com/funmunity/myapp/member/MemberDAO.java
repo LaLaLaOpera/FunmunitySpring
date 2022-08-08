@@ -50,7 +50,11 @@ public class MemberDAO extends DBconnection{
 				dto.setUser_level(rs.getString("user_level"));
 				dto.setUser_name(rs.getString("user_name"));
 				dto.setUser_num(rs.getString("user_num"));
-				dto.setProfile_img(rs.getString("profile_img"));
+//				if (!rs.getString("profile_img").equals(null)){
+//					dto.setProfile_img(rs.getString("profile_img"));
+//				}else{
+//					dto.setProfile_img(null);
+//				}
 			}
 			
 		}catch(Exception e) {

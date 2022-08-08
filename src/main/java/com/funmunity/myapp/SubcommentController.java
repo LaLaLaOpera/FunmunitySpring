@@ -17,9 +17,8 @@ public class SubcommentController {
         System.out.println(dto.toString());
 
         SubCommentDAO dao = new SubCommentDAO();
-        dto.setWriter("임시");
         dao.insertComment(dto);
-
+        dao.close();
         dto.setRecommended("0");
         Date date = new Date();
 

@@ -91,7 +91,7 @@
 								<input type="hidden" value="${Contentdto.idx}" name="boardidx">
 								<input type="hidden" value="${comment.idx}" name="commentidx">
 								<input type="hidden" value="${sessionScope.user_info.user_id}" name="writer">
-								<textarea name="content"></textarea>
+								<textarea class="subcommentContent" name="content"></textarea>
 								<button class="subcommentSubmit" type="button">댓글전송</button>
 							</form>
 						</div>
@@ -99,15 +99,15 @@
 				</div>
 				<div class="subCommentArea" id="commentNum${comment.idx}">
 					<c:forEach items="${subCommentMap[comment.idx]}" var="subcomment">
-						<div class="subCommnetBox">
+						<div class="subCommentBox">
 							<div class="commentatorInfo">
 							${subcomment.writer}
 							</div>
 							<div class="commentcontent">
-							<c:if test="${!(subcomment.mention eq null)}">
-								@${subcomment.mention}
-							</c:if>
-							${subcomment.content}
+								<c:if test="${!(subcomment.mention eq null)}">
+									@${subcomment.mention}
+								</c:if>
+								${subcomment.content}
 							</div>
 						</div>
 						<div class="commentExtra">
@@ -140,7 +140,7 @@
 										<input type="hidden" value="${subcomment.commentidx}" name="commentidx">
 										<input type="hidden" value="${subcomment.writer}" name="mention">
 										<input type="hidden" value="${sessionScope.user_info.user_id}" name="writer">
-										<textarea name="content"></textarea>
+										<textarea class="subcommentContent" name="content"></textarea>
 										<button class="subcommentSubmit" type="button">댓글전송</button>
 									</form>
 								</div>

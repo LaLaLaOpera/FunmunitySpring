@@ -19,7 +19,6 @@ public class CommentController {
     public CommentDTO insertComment(CommentDTO dto) throws Exception {
         System.out.println(dto.toString());
         CommentDAO dao = new CommentDAO();
-        dto.setWriter("임시");
         String idx = "1";
         try {
             idx = String.valueOf(Integer.parseInt(dao.maxIdx(dto.getBoardidx()))+1);
