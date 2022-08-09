@@ -2,10 +2,7 @@ package com.funmunity.myapp.pageview;
 
 import com.funmunity.myapp.boardContent.PageDAO;
 import com.funmunity.myapp.boardContent.PageDTO;
-import com.funmunity.myapp.comment.CommentDAO;
-import com.funmunity.myapp.comment.CommentDTO;
-import com.funmunity.myapp.comment.SubCommentDAO;
-import com.funmunity.myapp.comment.SubCommentDTO;
+import com.funmunity.myapp.comment.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +21,7 @@ public class ViewController {
 
 		PageDTO Contentdto = Contentdao.ContentRetrun(idx);
 
-		CommentDAO Commentdao = new CommentDAO();
+		CommentDAOImpl Commentdao = new CommentDAOImpl();
 
 		List<CommentDTO> commentList = Commentdao.queryComment(idx);
 
