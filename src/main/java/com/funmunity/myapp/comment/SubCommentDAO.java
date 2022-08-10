@@ -7,4 +7,7 @@ public interface SubCommentDAO {
     int insertComment(SubCommentDTO dto);
 
     Map<String, List<SubCommentDTO>> queryComment(String idx);
+
+    String maxIdx (Map<String, String> map);
+
 }

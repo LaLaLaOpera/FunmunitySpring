@@ -28,6 +28,18 @@ public class SubCommentDAOImpl implements SubCommentDAO {
 		return 0;
 	}
 	@Override
+	public String maxIdx (Map<String, String> map){
+		String result  = session.selectOne(namespace+"maxSubIdx", map);
+
+		if (result != null){
+			return result;
+		} else{
+			return "1";
+		}
+	}
+
+
+	@Override
 	public Map<String,List<SubCommentDTO>> queryComment(String idx) {
 		Map<String,List<SubCommentDTO>> subCommentList = new HashMap<>();
 		int maxIdx = 0;

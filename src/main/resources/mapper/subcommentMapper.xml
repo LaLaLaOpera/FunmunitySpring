@@ -7,11 +7,14 @@
         SELECT MAX(IDX) FROM USER_COMMENT WHERE BOARDIDX = #{idx}
     </select>
     <select id="queryComment" parameterType="Map" resultType="SubCommentDTO">
-        SELECT * FROM SUBCOMMENT WHERE BOARDIDX = #{boardidx} AND COMMENTIDX = #{idx}
+        SELECT * FROM SUBCOMMENT WHERE BOARDIDX = #{boardidx} AND COMMENTIDX = #{idx} ORDER BY IDX
     </select>
     <insert id="insertComment" parameterType="SubCommentDTO">
-        insert into SUBCOMMENT (boardidx, commentidx, writer, content, mention)
+        insert into SUBCOMMENT (boardidx, commentidx, writer, content, mention, IDX)
         values
-        (#{boardidx}, #{commentidx}, #{writer}, #{content}, #{mention})
+        (#{boardidx}, #{commentidx}, #{writer}, #{content}, #{mention},#{idx})
     </insert>
+    <select id="maxSubIdx" resultType="String" parameterType="Map">
+        SELECT MAX(IDX)+1 FROM SUBCOMMENT WHERE BOARDIDX = #{boardIdx} AND COMMENTIDX = #{commentIdx}
+    </select>
 </mapper>

@@ -11,6 +11,7 @@ public class SubCommentDTO {
 	private Date postdate;
 	private String recommended;
 	private String mention;
+	private String idx;
 	public String getBoardidx() {
 		return boardidx;
 	}
@@ -56,6 +57,14 @@ public class SubCommentDTO {
 		this.recommended = recommended;
 	}
 
+	public String getIdx() {
+		return idx;
+	}
+
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
+
 	@Override
 	public String toString() {
 		return "SubCommentDTO{" +
@@ -66,6 +75,7 @@ public class SubCommentDTO {
 				", postdate=" + postdate +
 				", recommended='" + recommended + '\'' +
 				", mention='" + mention + '\'' +
+				", idx='" + idx + '\'' +
 				'}';
 	}
 
@@ -74,11 +84,11 @@ public class SubCommentDTO {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		SubCommentDTO that = (SubCommentDTO) o;
-		return Objects.equals(boardidx, that.boardidx) && Objects.equals(commentidx, that.commentidx) && Objects.equals(writer, that.writer) && Objects.equals(content, that.content) && Objects.equals(postdate, that.postdate) && Objects.equals(recommended, that.recommended) && Objects.equals(mention, that.mention);
+		return Objects.equals(boardidx, that.boardidx) && Objects.equals(commentidx, that.commentidx) && Objects.equals(writer, that.writer) && Objects.equals(content, that.content) && Objects.equals(postdate, that.postdate) && Objects.equals(recommended, that.recommended) && Objects.equals(mention, that.mention) && Objects.equals(idx, that.idx);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(boardidx, commentidx, writer, content, postdate, recommended, mention);
+		return Objects.hash(boardidx, commentidx, writer, content, postdate, recommended, mention, idx);
 	}
 }

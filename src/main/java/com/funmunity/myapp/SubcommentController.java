@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class SubcommentController {
@@ -24,6 +26,13 @@ public class SubcommentController {
         if (dto.getMention() == null){
             dto.setMention("");
         }
+        Map<String, String> input = new HashMap<>();
+        input.put("boardIdx", dto.getBoardidx());
+        input.put("commentIdx",dto.getCommentidx());
+
+        String maxIdx = subCommentDAO.maxIdx(input);
+        dto.setIdx(maxIdx);
+        System.out.println("dto = " + dto);
         subCommentDAO.insertComment(dto);
         dto.setRecommended("0");
         Date date = new Date();

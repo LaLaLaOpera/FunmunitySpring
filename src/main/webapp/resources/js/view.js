@@ -313,6 +313,3 @@ function subcommentInsert(data){
 
 	resetFunction();
 }
-
-
-
