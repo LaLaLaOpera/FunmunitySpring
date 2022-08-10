@@ -180,11 +180,6 @@ function commentInsert(data) {
 	subCommentArea.setAttribute('class', 'subCommentArea');
 	subCommentArea.setAttribute('id','commentNum'+data.idx);
 
-	let emptyText = document.createElement('p');
-	emptyText.innerText = '답글이 없습니다.';
-
-	subCommentArea.appendChild(emptyText);
-
 	let commentArea = document.getElementById('commentArea');
 
 	commentArea.appendChild(commentBox);

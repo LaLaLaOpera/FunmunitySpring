@@ -1,7 +1,9 @@
 package com.funmunity.myapp;
 
 import com.funmunity.myapp.member.MemberDAO;
+import com.funmunity.myapp.member.MemberDAOImpl;
 import com.funmunity.myapp.member.MemberDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,13 +15,14 @@ import java.io.IOException;
 
 @Controller
 public class SigninController {
+
+    @Autowired
+    MemberDAO memberDAO;
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public void signup(MemberDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
-        MemberDAO dao = new MemberDAO();
 
-        int result = dao.RegisterUser(dto);
-        dao.close();
+        int result = memberDAO.RegisterUser(dto);
         if(result == 1){
             LoginController loginController = new LoginController();
             try {

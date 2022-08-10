@@ -3,19 +3,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.funmunity.myapp.comment.SubCommentMapper">
-<!--    <insert id="insertComment" parameterType="CommentDTO">-->
-<!--        INSERT INTO USER_COMMENT (BOARDIDX, IDX, WRITER, CONTENT)-->
-<!--        values (#{boardidx},#{idx},#{writer},#{content})-->
-<!--    </insert>-->
-    <select id="queryComment" parameterType="String" resultType="SubCommentDTO">
-        SELECT
-            BOARDIDX, IDX, WRITER, CONTENT, POSTDATE, RECOMMENDED
-        FROM USER_COMMENT WHERE BOARDIDX = #{boardidx} ORDER BY IDX
+    <select id="maxIdx" parameterType="String" resultType="String">
+        SELECT MAX(IDX) FROM USER_COMMENT WHERE BOARDIDX = #{idx}
     </select>
-    <select id="maxIdx" resultType="String" parameterType="String">
-        SELECT MAX(IDX) FROM USER_COMMENT WHERE BOARDIDX = #{BOARDIDX}
+    <select id="queryComment" parameterType="Map" resultType="SubCommentDTO">
+        SELECT * FROM SUBCOMMENT WHERE BOARDIDX = #{boardidx} AND COMMENTIDX = #{idx}
     </select>
-    <select id="singleComment" resultType="CommentDTO" parameterType="CommentDTO">
-        SELECT * FROM USER_COMMENT WHERE BOARDIDX = #{boardidx} AND IDX = #{idx}
-    </select>
+    <insert id="insertComment" parameterType="SubCommentDTO">
+        insert into SUBCOMMENT (boardidx, commentidx, writer, content, mention)
+        values
+        (#{boardidx}, #{commentidx}, #{writer}, #{content}, #{mention})
+    </insert>
 </mapper>

@@ -147,9 +147,6 @@
 							</div>
 						</div>
 					</c:forEach>
-					<c:if test="${subCommentMap[comment.idx].size() == 0}">
-						<p>답글이 없습니다.</p>
-					</c:if>
 				</div>
 			</c:forEach>
 		</div>

@@ -17,7 +17,6 @@ const observer = new IntersectionObserver((entries,observer)=>{
 				url : 'load',
 				data : {
 					page : ++boardNum,
-					board_cat : null
 				},
 				dataType: 'json',
 				success : function(data){
@@ -44,16 +43,16 @@ observer.observe(target);
 function addBlock(data){
 	let main = document.createElement('div');
 	main.setAttribute('class', 'cardWrapper');
-	let info = document.createElement('a');
-	info.innerText += 'r/'+data.title
-	info.setAttribute('href','view?idx='+data.idx);
 	let cat = document.createElement('a');
-	cat.innerText += 'r/'+data.board_cat
+	cat.innerText += 'Category/'+data.board_cat
 	cat.setAttribute('href','category?board_cat='+data.board_cat);
+	let info = document.createElement('a');
+	info.innerText += 'Title/'+data.title
+	info.setAttribute('href','view?idx='+data.idx);
 
 
 	let writer = document.createElement('p');
-	writer.innerText += data.writer;
+	writer.innerText += "User/"+data.writer;
 	writer.setAttribute('href','user='+data.writer);
 	let imgbox = document.createElement('div');
 	imgbox.setAttribute('class', 'imageWapper');

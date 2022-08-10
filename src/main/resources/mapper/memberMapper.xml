@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funmunity.myapp.comment.SubCommentMapper">
+    <insert id="RegisterUser" parameterType="MemberDTO">
+        INSERT INTO MEMBERSHIP VALUES (#{user_id}, NEXT_USER_SEQ.nextval, #{user_pw}, '0', #{user_email}, #{user_name},
+                                       'adventurer', '0', '1', '0', '1')
+    </insert>
+    <select id="userLogin" parameterType="Map" resultType="MemberDTO">
+        SELECT * FROM MEMBERSHIP WHERE USER_ID = #{user_id} and USER_PW = #{user_pw}
+    </select>
+</mapper>

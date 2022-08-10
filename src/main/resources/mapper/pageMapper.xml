@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funmunity.myapp.boardContent.PageMapper">
+    <select id="loadContent2" parameterType="Map" resultType="PageDTO">
+        SELECT * FROM(SELECT tb.*, ROWNUM rNum FROM (SELECT * FROM USER_BOARD
+                                                              where board_cat = #{board_cat} order by idx desc) tb ) where rNum = #{page}
+    </select>
+    <select id="loadContent" parameterType="Map" resultType="PageDTO">
+        SELECT * FROM(SELECT tb.*, ROWNUM rNum FROM (SELECT * FROM USER_BOARD order by idx desc) tb ) WHERE rNum = #{page}
+    </select>
+    <select id="ContentReturn" parameterType="String" resultType="PageDTO">
+        SELECT * FROM USER_BOARD WHERE IDX = #{idx}
+    </select>
+</mapper>

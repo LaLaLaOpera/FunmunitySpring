@@ -14,7 +14,18 @@
 	<div class="header_buffer">	
 	</div>
 	<div class="topContent">
+<%--		<div class="TrendingPost1">--%>
+<%--			<c:when test="${}">--%>
 
+<%--			</c:when>--%>
+<%--			<img src="">--%>
+<%--		</div>--%>
+<%--		<div class="TrendingPost2">--%>
+<%--			<img src="">--%>
+<%--		</div>--%>
+<%--		<div class="TrendingPost3">--%>
+<%--			<img src="">--%>
+<%--		</div>--%>
 	</div>
 	<div class="indexWrap">	
 		<div class="contentWrap">

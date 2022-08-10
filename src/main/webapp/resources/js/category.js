@@ -14,7 +14,7 @@ const observer = new IntersectionObserver((entries,observer)=>{
         if(entry.isIntersecting){	        	
         	$.ajax({
 				type : 'GET',
-				url : 'load',
+				url : 'catload',
 				data : {
 					page : ++boardNum,
 					board_cat : category

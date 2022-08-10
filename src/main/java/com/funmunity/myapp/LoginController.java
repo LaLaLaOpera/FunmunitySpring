@@ -2,6 +2,7 @@ package com.funmunity.myapp;
 
 import com.funmunity.myapp.member.MemberDAO;
 import com.funmunity.myapp.member.MemberDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,13 +13,14 @@ import java.io.PrintWriter;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    MemberDAO memberDAO;
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String login(MemberDTO data, HttpSession session, HttpServletResponse response) throws IOException {
-        MemberDAO dao = new MemberDAO();
-        MemberDTO dto = dao.userLogin(data.getUser_id(), data.getUser_pw());
+        MemberDTO dto = memberDAO.userLogin(data.getUser_id(), data.getUser_pw());
         System.out.println("dto = " + dto);
-        dao.close();
 
         if (dto.getUser_id().equals(data.getUser_id())) {
             session.setAttribute("user_info", dto);
