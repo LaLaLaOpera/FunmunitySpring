@@ -1,9 +1,9 @@
 package com.funmunity.myapp.boardContent;
 
+import com.funmunity.myapp.common.DBconnection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.funmunity.myapp.common.DBconnection;
 
 public class PageDAO extends DBconnection{
 	//1. 프론트에서 넘겨주는 값만 있다면 그 이후는 알아서 처리하게끔 if문을 통해 첫페이지와 아닌페이지에서 SQL문을 나눈다
@@ -12,7 +12,7 @@ public class PageDAO extends DBconnection{
 		if(!board_cat.equals(null) && !board_cat.equals("")){
 			return loadCatContent(num, board_cat, sql);
 
-		};
+		}
 		sql += " order by idx desc) tb ) WHERE rNum = ?";
 		PageDTO dto = new PageDTO();
 		psmt = con.prepareStatement(sql);

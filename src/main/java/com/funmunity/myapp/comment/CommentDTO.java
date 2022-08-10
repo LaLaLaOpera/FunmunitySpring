@@ -1,6 +1,7 @@
 package com.funmunity.myapp.comment;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class CommentDTO {
 	private String boardidx;
@@ -58,5 +59,18 @@ public class CommentDTO {
 				", postdate=" + postdate +
 				", recommended='" + recommended + '\'' +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		CommentDTO that = (CommentDTO) o;
+		return Objects.equals(boardidx, that.boardidx) && Objects.equals(idx, that.idx) && Objects.equals(writer, that.writer) && Objects.equals(content, that.content) && Objects.equals(postdate, that.postdate) && Objects.equals(recommended, that.recommended);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(boardidx, idx, writer, content, postdate, recommended);
 	}
 }

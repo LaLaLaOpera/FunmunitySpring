@@ -26,10 +26,10 @@ function resetFunction(){
 
 		if(d=="block"){
 			$(this).parent().parent().next().removeClass('on')
-			$(this).text('답글보기')
+			$(this).text(' 답글보기')
 		}else{
 			$(this).parent().parent().next().addClass('on')
-			$(this).text('답글접기')
+			$(this).text(' 답글접기')
 		}
 	})
 	$('#commentSubmit').off().on('click',function(){});
@@ -115,7 +115,7 @@ function commentInsert(data) {
 
 	let subCommentAreaActive = document.createElement('a');
 	subCommentAreaActive.setAttribute('class','subCommentAreaActive');
-	subCommentAreaActive.innerText = '답글보기';
+	subCommentAreaActive.innerText = ' 답글보기';
 	extraInfo.appendChild(recommend);
 	extraInfo.appendChild(recommendCount);
 	extraInfo.appendChild(commentActive);

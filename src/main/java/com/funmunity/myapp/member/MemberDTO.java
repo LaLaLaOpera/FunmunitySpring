@@ -1,5 +1,7 @@
 package com.funmunity.myapp.member;
 
+import java.util.Objects;
+
 public class MemberDTO {
 	private String user_id;
 	private String user_num;
@@ -94,5 +96,18 @@ public class MemberDTO {
 				", user_exp=" + user_exp +
 				", profile_img='" + profile_img + '\'' +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		MemberDTO memberDTO = (MemberDTO) o;
+		return fun_point == memberDTO.fun_point && user_exp == memberDTO.user_exp && Objects.equals(user_id, memberDTO.user_id) && Objects.equals(user_num, memberDTO.user_num) && Objects.equals(user_pw, memberDTO.user_pw) && Objects.equals(user_email, memberDTO.user_email) && Objects.equals(user_name, memberDTO.user_name) && Objects.equals(char_job, memberDTO.char_job) && Objects.equals(auth_level, memberDTO.auth_level) && Objects.equals(user_level, memberDTO.user_level) && Objects.equals(profile_img, memberDTO.profile_img);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(user_id, user_num, user_pw, fun_point, user_email, user_name, char_job, auth_level, user_level, user_exp, profile_img);
 	}
 }

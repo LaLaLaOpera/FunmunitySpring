@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-<!--        <typeAlias alias="" type="com.green.board."/>-->
+        <typeAlias alias="CommentDTO" type="com.funmunity.myapp.comment.CommentDTO"/>
+        <typeAlias alias="SubCommentDTO" type="com.funmunity.myapp.comment.SubCommentDTO"/>
+        <typeAlias alias="MemberDTO" type="com.funmunity.myapp.member.MemberDTO"/>
+        <typeAlias alias="PageDTO" type="com.funmunity.myapp.boardContent.PageDTO"/>
     </typeAliases>
 </configuration>

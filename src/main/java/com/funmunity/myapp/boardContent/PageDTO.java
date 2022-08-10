@@ -1,6 +1,7 @@
 package com.funmunity.myapp.boardContent;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class PageDTO {
 	public PageDTO() {}
@@ -88,5 +89,18 @@ public class PageDTO {
 	}
 	public void setK_recommanded(String k_recommanded) {
 		this.k_recommanded = k_recommanded;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		PageDTO pageDTO = (PageDTO) o;
+		return Objects.equals(idx, pageDTO.idx) && Objects.equals(title, pageDTO.title) && Objects.equals(content, pageDTO.content) && Objects.equals(thumnail, pageDTO.thumnail) && Objects.equals(postdate, pageDTO.postdate) && Objects.equals(writer, pageDTO.writer) && Objects.equals(viewcount, pageDTO.viewcount) && Objects.equals(recommandcount, pageDTO.recommandcount) && Objects.equals(board_cat, pageDTO.board_cat) && Objects.equals(sub_cat, pageDTO.sub_cat) && Objects.equals(h_recommanded, pageDTO.h_recommanded) && Objects.equals(k_recommanded, pageDTO.k_recommanded);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idx, title, content, thumnail, postdate, writer, viewcount, recommandcount, board_cat, sub_cat, h_recommanded, k_recommanded);
 	}
 }

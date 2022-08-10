@@ -22,7 +22,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.funmunity.myapp" />
-	
-	
-	
+
+
+	<view-controller path="/" view-name="index" />
+
 </beans:beans>

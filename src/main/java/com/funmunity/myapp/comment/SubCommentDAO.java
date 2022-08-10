@@ -1,13 +1,13 @@
 package com.funmunity.myapp.comment;
 
+import com.funmunity.myapp.common.DBconnection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import com.funmunity.myapp.common.DBconnection;
 
 public class SubCommentDAO extends DBconnection {
 	public int insertComment(SubCommentDTO dto) {
