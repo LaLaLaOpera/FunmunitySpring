@@ -1,5 +1,5 @@
 package com.funmunity.myapp.recommend;
 
-public class CommentRecommendDAO {
-
+public interface CommentRecommendDAO {
+    int insertCommentRecommend(CommentRecommendDTO dto);
 }

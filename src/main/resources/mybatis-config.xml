@@ -8,5 +8,8 @@
         <typeAlias alias="SubCommentDTO" type="com.funmunity.myapp.comment.SubCommentDTO"/>
         <typeAlias alias="MemberDTO" type="com.funmunity.myapp.member.MemberDTO"/>
         <typeAlias alias="PageDTO" type="com.funmunity.myapp.boardContent.PageDTO"/>
+        <typeAlias alias="CommentRecommendDTO" type="com.funmunity.myapp.recommend.CommentRecommendDTO"/>
+        <typeAlias alias="SubCommentRecommendDTO" type="com.funmunity.myapp.recommend.SubCommentRecommendDTO"/>
+        <typeAlias alias="PostRecommendDTO" type="com.funmunity.myapp.recommend.PostRecommendDTO"/>
     </typeAliases>
 </configuration>

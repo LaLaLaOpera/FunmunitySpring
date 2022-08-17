@@ -13,4 +13,7 @@
     <select id="ContentReturn" parameterType="String" resultType="PageDTO">
         SELECT * FROM USER_BOARD WHERE IDX = #{idx}
     </select>
+    <insert id="InsertPage" parameterType="PageDTO">
+        INSERT INTO USER_BOARD ()
+    </insert>
 </mapper>

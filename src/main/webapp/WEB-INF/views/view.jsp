@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/view.css">
+<link rel="stylesheet" href="<c:url value='/resources/css/view.css'/>">
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 			<div>
 				<h2>${Contentdto.title }</h2>
 				<div>
-					<img alt="" src="${Contentdto.thumnail}">
+					<img alt="" src="<c:url value='${Contentdto.thumnail}'/>">
 				</div>
 				<p>${Contentdto.content}</p>
 			</div>
@@ -28,15 +28,15 @@
 				<div class="profile_pic">
 					<c:choose>
 						<c:when test="${sessionScope.user_info eq null }">
-							<img src="resources/image/view/default.png">
+							<img src="<c:url value='/resources/image/view/default.png'/>">
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${sessionScope.user_info.profile_img == '1'}">
-									<img src="resources/image/view/default.png">
+									<img src="<c:url value='/resources/image/view/default.png'/>">
 								</c:when>
 								<c:otherwise>
-									<img src="${sessionScope.user_info.profile_img}">
+									<img src="<c:url value='${sessionScope.user_info.profile_img}'/>">
 								</c:otherwise>
 							</c:choose>
 						</c:otherwise>
@@ -63,8 +63,12 @@
 				</div>
 				<div class="commentExtra">
 					<div>
-						<span><a>추천하기</a></span>
-						<span>${comment.recommended }</span>
+						<form class="recommendInfo">
+							<input type="hidden" value="${comment.idx}" name="idx">
+							<input type="hidden" value="${comment.boardidx}" name="boardidx">
+						</form>
+						<button type="button" class="commentRecommend">추천하기</button>
+						<span class="recommendCnt">${comment.recommended }</span>
 						<a class="commentActive">reply</a>
 						<a class="subCommentAreaActive">답글 보기</a>
 					</div>
@@ -72,15 +76,15 @@
 						<div class="profile_pic">
 							<c:choose>
 								<c:when test="${sessionScope.user_info eq null }">
-									<img src="resources/image/view/default.png">
+									<img src="<c:url value='/resources/image/view/default.png'/>">
 								</c:when>
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${sessionScope.user_info.profile_img == '1'}">
-											<img src="resources/image/view/default.png">
+											<img src="<c:url value='/resources/image/view/default.png'/>">
 										</c:when>
 										<c:otherwise>
-											<img alt="유저 프로파일" src="${sessionScope.user_info.profile_img}">
+											<img alt="유저 프로파일" src="<c:url value='${sessionScope.user_info.profile_img}'/>">
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>
@@ -120,12 +124,12 @@
 								<div class="profile_pic">
 									<c:choose>
 										<c:when test="${sessionScope.user_info eq null }">
-											<img src="resources/image/view/default.png">
+											<img src="<c:url value='/resources/image/view/default.png'/>">
 										</c:when>
 										<c:otherwise>
 											<c:choose>
 												<c:when test="${sessionScope.user_info.profile_img == '1'}">
-													<img src="resources/image/view/default.png">
+													<img src="<c:url value='/resources/image/view/default.png'/>">
 												</c:when>
 												<c:otherwise>
 													<img alt="유저 프로파일" src="${sessionScope.user_info.profile_img}">
@@ -151,6 +155,6 @@
 			</c:forEach>
 		</div>
 	</div>
-	<script src="resources/js/view.js"></script>
+	<script src="<c:url value='/resources/js/view.js'/>"></script>
 </body>
 </html>

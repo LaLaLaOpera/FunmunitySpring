@@ -68,4 +68,10 @@ public class PageDAOImpl implements PageDAO {
 	public PageDTO ContentRetrun(String idx){
 		return session.selectOne(namespace+"ContentReturn",idx);
 	}
+
+	@Override
+	public int pageInsert(PageDTO dto){
+
+		return session.insert(namespace+"pageInsert",dto);
+	}
 }

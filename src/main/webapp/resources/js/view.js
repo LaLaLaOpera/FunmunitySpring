@@ -2,9 +2,11 @@
 resetFunction();
 
 function resetFunction(){
-	$('.commentActive').off().on('click',function (){});
 
-	$('.commentActive').click(function(){
+	let commentActive = $('.commentActive');
+	commentActive.off().on('click',function (){});
+
+	commentActive.click(function(){
 
 		let d = $(this).parent().siblings('.commentInput').css('display');
 
@@ -17,10 +19,10 @@ function resetFunction(){
 		}
 		return false
 	})
+	let subCommentAreaActive = $('.subCommentAreaActive');
+	subCommentAreaActive.off().on('click',function (){});
 
-	$('.subCommentAreaActive').off().on('click',function (){});
-
-	$('.subCommentAreaActive').click(function(){
+	subCommentAreaActive.click(function(){
 
 		let d = $(this).parent().parent().next().css('display');
 
@@ -32,9 +34,11 @@ function resetFunction(){
 			$(this).text(' 답글접기')
 		}
 	})
-	$('#commentSubmit').off().on('click',function(){});
-	$('#commentSubmit').click(function(){
+	let commentSubmit = $('#commentSubmit')
+	commentSubmit.off().on('click',function(){});
+	commentSubmit.click(function(){
 		let formData = $('#commentFrm').serialize() // serialize 사용
+		console.log(formData);
 		$.ajax({
 			url: "comment",
 			type: "POST",
@@ -45,14 +49,16 @@ function resetFunction(){
 				console.log(data);
 
 				commentInsert(data);
+
 			},
 			error: function (){
 				alert("댓글 전송에 실패했습니다.")
 			}
 		})
 	})
-	$('.subcommentSubmit').off().on('click',function(){});
-	$('.subcommentSubmit').click(function(){
+	let subcommentSubmit = $('.subcommentSubmit');
+	subcommentSubmit.off().on('click',function(){});
+	subcommentSubmit.click(function(){
 		let formData = $(this).parent().serialize(); // serialize 사용
 		let contentArea = $(this).siblings('.subcommentContent');
 		$.ajax({
@@ -70,6 +76,27 @@ function resetFunction(){
 			}
 		})
 	})
+	let commentRecommend = $('.commentRecommend');
+	commentRecommend.off().on('click', function (){})
+	commentRecommend.click(function(){
+		let formData = $(this).siblings('.recommendInfo').serialize();
+		let Cnt = $(this).siblings('.recommendCnt');
+		$.ajax({
+			url: "recommend/comment",
+			type: "POST",
+			cache: false,
+			data : formData,
+			success : function(data){
+				alert("추천에 성공했습니다")
+				console.log(data);
+				Cnt.html(data);
+			},
+			error: function(){
+				alert("추천에 실패")
+			}
+		})
+	})
+
 }
 
 function commentInsert(data) {
@@ -103,6 +130,7 @@ function commentInsert(data) {
 
 	let recommendBtn = document.createElement('a');
 	recommendBtn.innerText = '추천하기 ';
+	recommendBtn.setAttribute('class','commentRecommend');
 
 	recommend.appendChild(recommendBtn);
 

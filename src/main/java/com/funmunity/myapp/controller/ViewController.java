@@ -1,4 +1,4 @@
-package com.funmunity.myapp.pageview;
+package com.funmunity.myapp.controller;
 
 import com.funmunity.myapp.boardContent.PageDAO;
 import com.funmunity.myapp.boardContent.PageDAOImpl;

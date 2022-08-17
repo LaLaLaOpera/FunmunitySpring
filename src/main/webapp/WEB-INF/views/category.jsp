@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
-<link href="resources/css/category.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/category.css'/>" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -25,6 +25,6 @@
 		기타정보를 넣어둔다.
 		</div>
 	</div>
-<script src="resources/js/category.js"></script>
+<script src="<c:url value='/resources/js/category.js'/>"></script>
 </body>
 </html>

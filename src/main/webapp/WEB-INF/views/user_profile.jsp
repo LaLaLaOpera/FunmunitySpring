@@ -6,38 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
-<link href="./css/user_profile.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/user_profile.css'/>" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<div class="topContent">
-		${dailyTop}
-		${weeklyTop}
-		${monthlyTop}
+	<div class="user_profile">
+		해당유저의 정보를 불러온다
+		개인정보와 관련된 정보는 표기하지 아니하고
+		유저의 레벨, 유저 캐릭터의 직업
+		등을 표시
+		간단한 미니게임도 넣어보고 싶기때문에 미니게임 관련 스코어? 같은거도 넣고싶다.
 	</div>
-	<div class="indexWrap">	
-		<div class="contentWrap">
-			<c:forEach items="${boardLists}" var="board">
-				<div class="cardWrapper">
-					<a>r/${board.board_cat}</a><p>posted by ${board.writer}</p>
-					<a href="view.do?idx=${board.idx }">${board.title}</a>
-					<div class="imageWrapper">
-						<img class="thumb" src="${board.thumnail}">
-					</div>
-				</div>	
-			</c:forEach>
-			 <div id="endOfcontents">
-			</div>
+	<div>
+		div를 사이드 배열해서 한쪽은 유저가 쓴 최근 글을 한쪽은 댓글을 표시해준다.
+		<div>
+
 		</div>
-		<div class="rightsideWrap">
-			<div class="user_info">
-				
-			</div>
-			<div class="footer">
-			
-			</div>
+		<div>
+
 		</div>
 	</div>
-	<script src="./js/user_profile.js"></script>
+	<script src="<c:url value='/resources/js/user_profile.js'/>"></script>
 </body>
 </html>

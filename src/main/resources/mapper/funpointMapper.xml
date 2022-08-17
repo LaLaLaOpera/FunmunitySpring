@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funmunity.myapp.funpoint">
+<!--추천 받을때마다 게시글을 5 point, 댓글은 1 point, 만약 게시글이 처음 일정 추천수를 넘기면 그에 따라 추가로 포인트 지급-->
+    <update id="commentRecommended" parameterType="String">
+        UPDATE SET FUN_POINT = FUN_POINT+1 WHERE USER_ID = #{user_id}
+    </update>
+    <update id="contentRecommended" parameterType="String">
+        UPDATE SET FUN_POINT = FUN_POINT+5 WHERE USER_ID = #{user_id}
+    </update>
+    <!--자기의 게시판을 열때에는 포인트를 지불하고 열 수 있다.-->
+</mapper>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CommentDAOImpl implements CommentDAO {
@@ -76,4 +77,10 @@ public class CommentDAOImpl implements CommentDAO {
 
 		return session.selectOne(namespace+"singleComment", commentDTO);
 	}
+	public String commentRecommend(Map<String, String> map){
+		session.update(namespace+"recommendUpdate", map);
+
+		return session.selectOne(namespace+"commentRecommend", map);
+	}
+
 }

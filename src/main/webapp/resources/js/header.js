@@ -62,6 +62,18 @@ $('.loginConfirm').click(function (){
 });
 
 $('.signupConfirm').click(function(){
+    let id = $('#signup_id').val();
+    let pw = $('#signup_pw').val();
+    let pwr = $('#pw_confirm').val();
+    let mail = $('#signup_mail').val();
+    let name = $('#signup_name').val();
+
+    if (pw != pwr){
+        alert("비밀번호를 다시 확인해주세요")
+        pw.focus();
+    }
+
+
     let signupData = $("#signupFrm").serialize();
     $.ajax({
         type : 'POST',
@@ -69,10 +81,12 @@ $('.signupConfirm').click(function(){
         cache: false,
         data: signupData,
         success : function(data){
+            console.log(data);
             alert("회원가입에 성공하였습니다.");
             location.reload();
         },
         error: function(data){
+            console.log(data);
             alert("다시 시도해주세요");
         }
     })
@@ -81,8 +95,8 @@ $('.signupConfirm').click(function(){
 function logout(){
     if (confirm("로그아웃하겠습니까?")){
         $.ajax({
-            type : 'GET',
-            url : 'user',
+            type : 'POST',
+            url : 'logout',
             cache: false,
             success : function(){
                 alert("로그아웃되었습니다.");

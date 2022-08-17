@@ -1,4 +1,4 @@
-package com.funmunity.myapp;
+package com.funmunity.myapp.controller;
 
 import com.funmunity.myapp.comment.CommentDAO;
 import com.funmunity.myapp.comment.CommentDTO;

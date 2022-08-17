@@ -5,7 +5,7 @@
 <mapper namespace="com.funmunity.myapp.comment.SubCommentMapper">
     <insert id="RegisterUser" parameterType="MemberDTO">
         INSERT INTO MEMBERSHIP VALUES (#{user_id}, NEXT_USER_SEQ.nextval, #{user_pw}, '0', #{user_email}, #{user_name},
-                                       'adventurer', '0', '1', '0', '1')
+                                       'adventurer', '0', '1', '0', sysdate)
     </insert>
     <select id="userLogin" parameterType="Map" resultType="MemberDTO">
         SELECT * FROM MEMBERSHIP WHERE USER_ID = #{user_id} and USER_PW = #{user_pw}

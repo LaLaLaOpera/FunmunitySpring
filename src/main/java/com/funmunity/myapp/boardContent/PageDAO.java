@@ -8,4 +8,6 @@ public interface PageDAO {
     PageDTO loadContent(Map input) throws SQLException;
 
     PageDTO ContentRetrun(String idx) throws SQLException;
+
+    int pageInsert(PageDTO dto);
 }

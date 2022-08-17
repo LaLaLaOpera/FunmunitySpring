@@ -1,4 +1,4 @@
-package com.funmunity.myapp;
+package com.funmunity.myapp.controller;
 
 import com.funmunity.myapp.member.MemberDAO;
 import com.funmunity.myapp.member.MemberDTO;
@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     MemberDAO memberDAO;
     @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "**/user", method = RequestMethod.POST)
     public String login(MemberDTO data, HttpSession session, HttpServletResponse response) throws IOException {
         MemberDTO dto = memberDAO.userLogin(data.getUser_id(), data.getUser_pw());
         System.out.println("dto = " + dto);
@@ -46,7 +46,7 @@ public class LoginController {
             return "실패했습니다";
         }
     }
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    @RequestMapping(value = "**/logout",method = RequestMethod.POST)
     public String logout(HttpSession session){
         session.removeAttribute("user_info");
 

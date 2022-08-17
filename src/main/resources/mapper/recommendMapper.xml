@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funmunity.myapp.recommend">
+    <insert id="insertCommentRecommend" parameterType="CommentRecommendDTO">
+        INSERT INTO COMMENTRECOMMEND
+            (BOARDIDX, IDX, USER_ID)
+        values (#{boardidx}, #{idx}, #{user_id})
+    </insert>
+    <insert id="insertPostRecommend" parameterType="PostRecommendDTO">
+        INSERT INTO POSTRECOMMEND
+            (IDX, USER_ID)
+        VALUES (#{idx}, #{user_id})
+    </insert>
+    <insert id="insertSubCommentRecommend" parameterType="SubCommentRecommendDTO">
+        INSERT INTO SUBCOMMENTRECOMMEND
+            (IDX, BOARDIDX, COMMENTIDX, USER_ID)
+        VALUES (#{idx},#{boardidx},#{commentidx},#{user_id})
+    </insert>
+</mapper>

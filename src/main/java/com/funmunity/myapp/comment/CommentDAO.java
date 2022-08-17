@@ -1,6 +1,7 @@
 package com.funmunity.myapp.comment;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentDAO {
 
@@ -14,4 +15,6 @@ public interface CommentDAO {
 
 
     CommentDTO singleComment(CommentDTO commentDTO);
+
+    String commentRecommend(Map<String,String> map);
 }

@@ -1,7 +1,6 @@
-package com.funmunity.myapp;
+package com.funmunity.myapp.controller;
 
 import com.funmunity.myapp.member.MemberDAO;
-import com.funmunity.myapp.member.MemberDAOImpl;
 import com.funmunity.myapp.member.MemberDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,27 +13,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-public class SigninController {
+public class SignUpController {
 
     @Autowired
     MemberDAO memberDAO;
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void signup(MemberDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
 
         int result = memberDAO.RegisterUser(dto);
-        if(result == 1){
-            LoginController loginController = new LoginController();
-            try {
-                loginController.login(dto, session, response);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("로그인 오류");
-            }
-        }else{
-            System.out.println("회원등록 실패");
-            throw new Exception();
-        }
+
     }
 
 //    @RequestMapping

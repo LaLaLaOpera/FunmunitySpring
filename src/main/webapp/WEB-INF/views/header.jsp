@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="<c:url value='/resources/css/header.css'/>">
 <meta charset="UTF-8">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -31,19 +31,23 @@
 			<form id="signupFrm">
 				<ul>
 					<li>아이디</li>
-					<li><input type="text" name="user_id"></li>
+					<li><input type="text" name="user_id" id="signup_id"></li>
 				</ul>
 				<ul>
 					<li>비밀번호</li>
-					<li><input type="password" name="user_pw"></li>
+					<li><input type="password" name="user_pw" id="signup_pw"></li>
+				</ul>
+				<ul>
+					<li>비밀번호 확인</li>
+					<li><input type="password" name=""user_pwre id="pw_confirm"></li>
 				</ul>
 				<ul>
 					<li>이메일</li>
-					<li><input type="text" name="user_email"></li>
+					<li><input type="text" name="user_email" id="signup_mail"></li>
 				</ul>
 				<ul>
 					<li>이름</li>
-					<li><input type="text" name="user_name"></li>
+					<li><input type="text" name="user_name" id="signup_name"></li>
 				</ul>
 				<button type="button" class="signupConfirm">회원가입</button>
 				<button type="button" class="signUpExit">창닫기</button>
@@ -52,11 +56,11 @@
 	</div>
 	<div class="headerWrap">
 		<nav class="navWrap">
-			<a class="logo" href="../myapp">logo</a>
+			<a class="logo" href="<c:url value='/'/> ">logo</a>
 			<div class="searchWrap">
 				<form class="searchFrm">
 					<input type="text" class="search_bar">
-					<button class="searchBtn"><img src="resources/image/header/searchBtn.png"></button>
+					<button class="searchBtn"><img src="<c:url value='/resources/image/header/searchBtn.png'/>"></button>
 				</form>
 			</div>
 			<div class="header_menu">
@@ -68,7 +72,7 @@
 					</c:when>
 					<c:otherwise>
 						<li><a onclick="logout()">로그아웃</a></li>
-						<li><a href="">등등</a></li>
+						<li><a href="">마이페이지</a></li>
 						<li><a href="">필요한기능</a></li>
 					</c:otherwise>
 				</c:choose>
@@ -80,9 +84,8 @@
 		</nav>
 		<div class="Accordion off" id="AccordionMenu">
 			<ul>
-				<li>더미 리스트</li>
-				<li>더미 리스트</li>
-				<li>더미 리스트</li>
+				<li><a href="CreateCategory">게시판 만들기</a></li>
+				<li><a href="write">글쓰기</a></li>
 				<li>더미 리스트</li>
 				<li>더미 리스트</li>
 				<li>더미 리스트</li>
@@ -95,6 +98,6 @@
 			</ul>
 		</div>
 	</div>
-	<script src="resources/js/header.js"></script>
+	<script src="<c:url value='/resources/js/header.js'/>"></script>
 </body>
 </html>

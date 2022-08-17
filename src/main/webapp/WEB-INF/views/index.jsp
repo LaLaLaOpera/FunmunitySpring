@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Main Page</title>
-<link href="resources/css/index.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/index.css'/>" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -36,6 +36,6 @@
 		기타정보를 넣어둔다.
 		</div>
 	</div>
-<script src="resources/js/index.js"></script>
+<script src="<c:url value='/resources/js/index.js'/>"></script>
 </body>
 </html>
