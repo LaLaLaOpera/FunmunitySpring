@@ -17,12 +17,16 @@ public class SignUpController {
 
     @Autowired
     MemberDAO memberDAO;
+
+
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void signup(MemberDTO dto, HttpSession session, HttpServletResponse response) throws Exception {
 
         int result = memberDAO.RegisterUser(dto);
-
+        if (result != 1 ){
+            throw new Exception();
+        }
     }
 
 //    @RequestMapping

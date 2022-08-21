@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,13 +33,17 @@ public class CommentController {
 
         dto.setIdx(idx);
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         int result = commentdao.insertComment(dto);
         dto = commentdao.singleComment(dto);
+        String date = format.format(dto.getPostdate());
+        Date date1 = format.parse(date);
+        dto.setPostdate(date1);
         System.out.println("dto = " + dto);
+        System.out.println(dto.getPostdate());
         if (result != 1){
             throw new Exception();
         }
         return dto;
     }
-
 }

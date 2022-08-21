@@ -52,4 +52,12 @@ public class LoginController {
 
         return "index";
     }
+
+    @ResponseBody
+    @PostMapping("**/loginCheck")
+    public void loginCheck(HttpSession session) throws Exception {
+        if (session.getAttribute("user_info")==null){
+            throw new Exception();
+        }
+    }
 }

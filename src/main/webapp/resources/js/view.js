@@ -1,100 +1,135 @@
 
 resetFunction();
 
+function commentActiveFunction(){
+	let d = $(this).parent().siblings('.commentInput').css('display');
+
+	if(d=='grid'){
+		$('.commentInput').removeClass('on')
+	}
+	else{
+		$('.commentInput').removeClass('on')
+		$(this).parent().next().addClass('on')
+	}
+	return false
+}
+
+function subcommentActiveFunction(){
+	let d = $(this).parent().parent().next().css('display');
+
+	if(d=="block"){
+		$(this).parent().parent().next().removeClass('on')
+		$(this).text(' 답글보기')
+	}else{
+		$(this).parent().parent().next().addClass('on')
+		$(this).text(' 답글접기')
+	}
+}
+
+function commentSubmitFunction(){
+	let formData = $('#commentFrm').serialize() // serialize 사용
+	console.log(formData);
+	$.ajax({
+		url: "comment",
+		type: "POST",
+		cache: false,
+		data: formData, // data에 바로 serialze한 데이터를 넣는다.
+		success: function(data){
+			$('#commentContent').val('');
+			console.log(data);
+
+			commentInsert(data);
+
+		},
+		error: function (){
+			alert("댓글 전송에 실패했습니다.")
+		}
+	})
+}
+
+function subcommentSubmitFunction(){
+	let formData = $(this).parent().serialize(); // serialize 사용
+	let contentArea = $(this).siblings('.subcommentContent');
+	$.ajax({
+		url: "subcomment",
+		type: "POST",
+		cache: false,
+		data: formData, // data에 바로 serialze한 데이터를 넣는다.
+		success: function(data){
+			console.log(data);
+			contentArea.val('');
+			subcommentInsert(data);
+		},
+		error: function (){
+			alert("댓글 전송에 실패했습니다.")
+		}
+	})
+}
+
+function commentRecommendFunction(){
+	let formData = $(this).siblings('.recommendInfo').serialize();
+	let Cnt = $(this).siblings('.recommendCnt');
+	$.ajax({
+		url: "recommend/comment",
+		type: "POST",
+		cache: false,
+		data : formData,
+		success : function(data){
+			alert("추천에 성공했습니다")
+			console.log(data);
+			Cnt.html(data);
+		},
+		error: function(){
+			alert("추천에 실패")
+		}
+	})
+}
+let message = "";
+function loginCheck(){
+	$.ajax({
+		url: "loginCheck",
+		type: "POST",
+		cache: false,
+		success: function(){
+			message = "success";
+		},
+		error: function (){
+			message = "fail";
+			alert("로그인이 필요한 기능입니다.")
+		}
+	})
+	console.log(message);
+	return message;
+}
+
 function resetFunction(){
 
 	let commentActive = $('.commentActive');
 	commentActive.off().on('click',function (){});
+	commentActive.click(commentActiveFunction);
 
-	commentActive.click(function(){
 
-		let d = $(this).parent().siblings('.commentInput').css('display');
-
-		if(d=='grid'){
-			$('.commentInput').removeClass('on')
-		}
-		else{
-			$('.commentInput').removeClass('on')
-			$(this).parent().next().addClass('on')
-		}
-		return false
-	})
 	let subCommentAreaActive = $('.subCommentAreaActive');
 	subCommentAreaActive.off().on('click',function (){});
+	subCommentAreaActive.click(subcommentActiveFunction);
 
-	subCommentAreaActive.click(function(){
 
-		let d = $(this).parent().parent().next().css('display');
-
-		if(d=="block"){
-			$(this).parent().parent().next().removeClass('on')
-			$(this).text(' 답글보기')
-		}else{
-			$(this).parent().parent().next().addClass('on')
-			$(this).text(' 답글접기')
-		}
-	})
 	let commentSubmit = $('#commentSubmit')
 	commentSubmit.off().on('click',function(){});
 	commentSubmit.click(function(){
-		let formData = $('#commentFrm').serialize() // serialize 사용
-		console.log(formData);
-		$.ajax({
-			url: "comment",
-			type: "POST",
-			cache: false,
-			data: formData, // data에 바로 serialze한 데이터를 넣는다.
-			success: function(data){
-				$('#commentContent').val('');
-				console.log(data);
-
-				commentInsert(data);
-
-			},
-			error: function (){
-				alert("댓글 전송에 실패했습니다.")
-			}
-		})
+		if (loginCheck() == "success") {
+			commentSubmitFunction();
+		}
 	})
 	let subcommentSubmit = $('.subcommentSubmit');
 	subcommentSubmit.off().on('click',function(){});
 	subcommentSubmit.click(function(){
-		let formData = $(this).parent().serialize(); // serialize 사용
-		let contentArea = $(this).siblings('.subcommentContent');
-		$.ajax({
-			url: "subcomment",
-			type: "POST",
-			cache: false,
-			data: formData, // data에 바로 serialze한 데이터를 넣는다.
-			success: function(data){
-				console.log(data);
-				contentArea.val('');
-				subcommentInsert(data);
-			},
-			error: function (){
-				alert("댓글 전송에 실패했습니다.")
-			}
-		})
+		subcommentSubmitFunction();
 	})
 	let commentRecommend = $('.commentRecommend');
 	commentRecommend.off().on('click', function (){})
 	commentRecommend.click(function(){
-		let formData = $(this).siblings('.recommendInfo').serialize();
-		let Cnt = $(this).siblings('.recommendCnt');
-		$.ajax({
-			url: "recommend/comment",
-			type: "POST",
-			cache: false,
-			data : formData,
-			success : function(data){
-				alert("추천에 성공했습니다")
-				console.log(data);
-				Cnt.html(data);
-			},
-			error: function(){
-				alert("추천에 실패")
-			}
-		})
+		commentRecommendFunction();
 	})
 
 }
@@ -111,7 +146,7 @@ function commentInsert(data) {
 	commentatorId.innerText= data.writer+" ";
 
 	let commentDate = document.createElement('span');
-	commentDate.innerText = data.postdate;
+	commentDate.innerText = "방금전에 생성";
 	commentatorId.appendChild(commentDate);
 	commentatorInfo.appendChild(commentatorId);
 

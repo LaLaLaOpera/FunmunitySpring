@@ -1,15 +1,20 @@
 package com.funmunity.myapp.comment;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class CommentDTO {
+
 	private String boardidx;
 	private String idx;
 	private String writer;
 	private String content;
+
 	private Date postdate;
 	private String recommended;
+
+	private String simpleDate;
 	public String getBoardidx() {
 		return boardidx;
 	}
@@ -47,6 +52,14 @@ public class CommentDTO {
 
 	public void setRecommended(String recommended) {
 		this.recommended = recommended;
+	}
+
+	public String getSimpleDate() {
+		return simpleDate;
+	}
+
+	public void setSimpleDate(String simpleDate) {
+		this.simpleDate = simpleDate;
 	}
 
 	@Override

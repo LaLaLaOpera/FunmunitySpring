@@ -48,13 +48,18 @@ function addBlock(data){
 	info.innerText += 'Title/'+data.title
 	info.setAttribute('href','view?idx='+data.idx);
 
-	console.log(data.postdate);
-
-	console.log(displayedAt(data.postdate));
+	let time = displayedAt(data.postdate)
+	let postdate = document.createElement('p');
+	postdate.innerText = time;
 
 	let writer = document.createElement('p');
 	writer.innerText += "User/"+data.writer;
 	writer.setAttribute('href','user='+data.writer);
+	main.appendChild(info);
+	main.appendChild(document.createElement("br"));
+	main.appendChild(cat);
+	main.appendChild(writer);
+	main.appendChild(postdate);
 	if (data.thumnail != null){
 		let imgbox = document.createElement('div');
 		imgbox.setAttribute('class', 'imageWapper');
@@ -65,16 +70,11 @@ function addBlock(data){
 		imgbox.appendChild(img);
 	}
 
-	 main.appendChild(info);
-	 main.appendChild(document.createElement("br"));
-	 main.appendChild(cat);
-	 main.appendChild(writer);
-
 	 target.before(main);
 }
 
 function displayedAt(createdAt) {
-	const milliSeconds = new Date() - createdAt
+	const milliSeconds = new Date() - createdAt;
 	const seconds = milliSeconds / 1000
 	if (seconds < 60) return `방금 전`
 	const minutes = seconds / 60

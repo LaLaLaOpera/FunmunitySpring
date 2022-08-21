@@ -1,6 +1,10 @@
 package com.funmunity.myapp.controller;
 import com.funmunity.myapp.boardContent.PageDAO;
 import com.funmunity.myapp.boardContent.PageDAOImpl;
+import com.funmunity.myapp.category.CategoryDAO;
+import com.funmunity.myapp.category.CategoryDTO;
+import com.funmunity.myapp.member.MemberDTO;
+import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.funmunity.myapp.boardContent.PageDTO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +22,9 @@ public class BoardController {
 
 	@Autowired
 	PageDAO pageDAO;
+
+	@Autowired
+	CategoryDAO categoryDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -58,5 +67,45 @@ public class BoardController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	@GetMapping("**/categoryCreate")
+	public String categoryCreate(HttpSession session){
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("user_info");
+		if (memberDTO.getFun_point()<1000){
+			return "index";
+		}
+		return "cat_create";
+	}
+
+	@PostMapping("**/categoryCreate")
+	public void categoryCreate(CategoryDTO categoryDTO, HttpServletRequest request, Model model){
+
+		int result = categoryDAO.insertCategory(categoryDTO);
+		if (result ==1){
+			category(model,categoryDTO.getCat_name());
+		}else{
+			
+		}
+	}
+
+	@GetMapping("**/postUpload")
+	public String postUpload(){
+
+		return "postUpload";
+	}
+	@PostMapping("**/postUpload")
+	public void postUpload(PageDTO pageDTO, HttpSession session){
+		if (pageDTO.getThumnail() == null){
+			pageDTO.setThumnail("");
+		}
+		pageDTO.setWriter(session.getId());
+		pageDAO.pageInsert(pageDTO);
+	}
+
+	@ResponseBody
+	@GetMapping("**/subcategory")
+	public Map subCategoryQuery(@RequestParam("category") String category){
+		Map subCategory  = categoryDAO.subCategorySearch(category);
+		return subCategory;
 	}
 }

@@ -14,6 +14,7 @@
         SELECT * FROM USER_BOARD WHERE IDX = #{idx}
     </select>
     <insert id="InsertPage" parameterType="PageDTO">
-        INSERT INTO USER_BOARD ()
+        INSERT INTO USER_BOARD (idx,title,content,thumnail,postdate,writer,board_cat,sub_cat)
+        values (#{idx},#{title},#{content},#{thumnail},#{postdate},#{writer},#{board_cat},#{sub_Cat})
     </insert>
 </mapper>

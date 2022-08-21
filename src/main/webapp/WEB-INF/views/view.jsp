@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@
 			<c:forEach items="${commentList}" var="comment" varStatus="loop">
 				<div class="commentBox">
 					<div class="commentatorInfo">
-						<p>${comment.writer} <span>${comment.postdate}</span></p>
+						<p>${comment.writer} <span>${comment.simpleDate}에 작성한 댓글입니다.</span></p>
 					</div>
 					<div class="commentcontent">
 					${comment.content}
@@ -105,7 +106,7 @@
 					<c:forEach items="${subCommentMap[comment.idx]}" var="subcomment">
 						<div class="subCommentBox">
 							<div class="commentatorInfo">
-							${subcomment.writer}
+								<p>${subcomment.writer} <span><fmt:formatDate value="${subcomment.postdate}" pattern="yyyy-MM-dd HH:mm:ss"/></span></p>
 							</div>
 							<div class="commentcontent">
 								<c:if test="${!(subcomment.mention eq null)}">
