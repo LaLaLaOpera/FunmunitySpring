@@ -10,4 +10,6 @@ public interface PageDAO {
     PageDTO ContentRetrun(String idx) throws SQLException;
 
     int pageInsert(PageDTO dto);
+
+    String postRecommend(Map<String, Integer> input) throws Exception;
 }

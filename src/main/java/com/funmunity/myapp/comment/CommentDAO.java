@@ -16,5 +16,5 @@ public interface CommentDAO {
 
     CommentDTO singleComment(CommentDTO commentDTO);
 
-    String commentRecommend(Map<String,String> map);
+    String commentRecommend(Map<String, String> map);
 }

@@ -47,9 +47,9 @@ function commentSubmitFunction(){
 	})
 }
 
-function subcommentSubmitFunction(){
-	let formData = $(this).parent().serialize(); // serialize 사용
-	let contentArea = $(this).siblings('.subcommentContent');
+function subcommentSubmitFunction(target){
+	let formData = target.parent().serialize(); // serialize 사용
+	let contentArea = target.siblings('.subcommentContent');
 	$.ajax({
 		url: "subcomment",
 		type: "POST",
@@ -66,9 +66,9 @@ function subcommentSubmitFunction(){
 	})
 }
 
-function commentRecommendFunction(){
-	let formData = $(this).siblings('.recommendInfo').serialize();
-	let Cnt = $(this).siblings('.recommendCnt');
+function commentRecommendFunction(target){
+	let formData = target.siblings('.recommendInfo').serialize();
+	let Cnt = target.siblings('.recommendCnt');
 	$.ajax({
 		url: "recommend/comment",
 		type: "POST",
@@ -124,12 +124,18 @@ function resetFunction(){
 	let subcommentSubmit = $('.subcommentSubmit');
 	subcommentSubmit.off().on('click',function(){});
 	subcommentSubmit.click(function(){
-		subcommentSubmitFunction();
+		if (loginCheck() == "success") {
+			let target = $(this);
+			subcommentSubmitFunction(target);
+		}
 	})
 	let commentRecommend = $('.commentRecommend');
 	commentRecommend.off().on('click', function (){})
 	commentRecommend.click(function(){
-		commentRecommendFunction();
+		if (loginCheck() == "success") {
+			let target = $(this);
+			commentRecommendFunction(target);
+		}
 	})
 
 }

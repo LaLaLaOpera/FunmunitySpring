@@ -73,7 +73,7 @@
 					<c:otherwise>
 						<li><a onclick="logout()">로그아웃</a></li>
 						<li><a href="">마이페이지</a></li>
-						<li><a href="">필요한기능</a></li>
+						<li><a href="">글쓰기</a></li>
 					</c:otherwise>
 				</c:choose>
 					<li>

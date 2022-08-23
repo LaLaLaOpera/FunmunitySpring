@@ -17,4 +17,11 @@
         INSERT INTO USER_BOARD (idx,title,content,thumnail,postdate,writer,board_cat,sub_cat)
         values (#{idx},#{title},#{content},#{thumnail},#{postdate},#{writer},#{board_cat},#{sub_Cat})
     </insert>
+
+    <select id="postRecommend" resultType="String" parameterType="Map">
+        SELECT RECOMMENDCOUNT FROM user_board WHERE IDX = #{idx}
+    </select>
+    <update id="recommendUpdate" parameterType="Map">
+        UPDATE user_board SET RECOMMENDCOUNT = RECOMMENDCOUNT+1 WHERE IDX = #{idx}
+    </update>
 </mapper>

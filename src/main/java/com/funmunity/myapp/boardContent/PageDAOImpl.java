@@ -74,4 +74,14 @@ public class PageDAOImpl implements PageDAO {
 
 		return session.insert(namespace+"pageInsert",dto);
 	}
+
+	public String postRecommend(Map<String, Integer> input) throws Exception {
+		int result = session.insert(namespace+"recommendUpdate",input);
+		if (result == 1){
+			return session.selectOne(namespace+"postRecommend",input);
+		}else{
+			throw new Exception();
+		}
+	}
+
 }

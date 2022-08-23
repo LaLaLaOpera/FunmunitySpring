@@ -5,19 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SubCommentRecommendDAO {
+public class PostRecommendDAOImpl implements PostRecommendDAO {
 
     @Autowired
     SqlSession session;
 
     String namespace = "com.funmunity.myapp.recommend.";
 
-    public int insertCommentRecommend(SubCommentRecommendDTO dto){
-        try{
-            return session.insert(namespace+"insertSubCommentRecommend",dto);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 0;
+    @Override
+    public int insertPostRecommend(PostRecommendDTO postRecommendDTO){
+        return session.insert(namespace+"insertPostRecommend",postRecommendDTO);
     }
 }
