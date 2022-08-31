@@ -73,7 +73,7 @@
 					<c:otherwise>
 						<li><a onclick="logout()">로그아웃</a></li>
 						<li><a href="">마이페이지</a></li>
-						<li><a href="">글쓰기</a></li>
+						<li><a href="post">글쓰기</a></li>
 					</c:otherwise>
 				</c:choose>
 					<li>
@@ -85,7 +85,7 @@
 		<div class="Accordion off" id="AccordionMenu">
 			<ul>
 				<li><a href="CreateCategory">게시판 만들기</a></li>
-				<li><a href="write">글쓰기</a></li>
+				<li><a href="<c:url value='post'/>">글쓰기</a></li>
 				<li>더미 리스트</li>
 				<li>더미 리스트</li>
 				<li>더미 리스트</li>

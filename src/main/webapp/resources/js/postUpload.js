@@ -24,3 +24,17 @@ function changeSubSelect(value){
 	})
 }
 
+function uploadImage(){
+	let imageData = "";
+	$.ajax({
+		url: 'https://api.imgur.com/3/image',
+		headers: {
+			'Authorization': 'Client-ID c88d329f23f4701'
+		},
+		type: 'POST',
+		data: {
+			'image': imageData
+		},
+		success: function(data) { console.log(data.data.link); }
+	});
+}

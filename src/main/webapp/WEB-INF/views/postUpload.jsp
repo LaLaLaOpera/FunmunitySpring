@@ -25,10 +25,12 @@
         </select>
       </li>
     </ul>
-
+    <input name="title">
+    <textarea name="content"></textarea>
     <button type="submit" onclick="">글쓰기</button>
     <button type="button" onclick="">취소하기</button>
   </form>
+  <input type="file" accept="image/*" class="imageFile">
 <script src="<c:url value='/resources/js/postUpload.js'/>"></script>
 </body>
 </html>
